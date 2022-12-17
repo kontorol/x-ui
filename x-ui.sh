@@ -449,7 +449,7 @@ ssl_cert_issue() {
             LOGE "Default CA, Lets'Encrypt fail, script exiting..."
             exit 1
         fi
-        export CF_Key="${CF_GlobalKey}"
+        export Arvan_Token="${CF_GlobalKey}"
         export CF_Email=${CF_AccountEmail}
         ~/.acme.sh/acme.sh --issue --dns dns_arvan -d ${CF_Domain} -d *.${CF_Domain} --log
         if [ $? -ne 0 ]; then
