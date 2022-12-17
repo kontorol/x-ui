@@ -420,7 +420,7 @@ ssl_cert_issue() {
     if [ $? -eq 0 ]; then
         cd ~
         LOGI "Install Acme-Script"
-        curl https://get.acme.sh | sh
+        curl https://raw.githubusercontent.com/kontorol/acme.sh/master/install.sh | sh
         if [ $? -ne 0 ]; then
             LOGE "Failed to install acme script"
             exit 1
@@ -451,7 +451,7 @@ ssl_cert_issue() {
         fi
         export CF_Key="${CF_GlobalKey}"
         export CF_Email=${CF_AccountEmail}
-        ~/.acme.sh/acme.sh --issue --dns dns_cf -d ${CF_Domain} -d *.${CF_Domain} --log
+        ~/.acme.sh/acme.sh --issue --dns dns_arvan -d ${CF_Domain} -d *.${CF_Domain} --log
         if [ $? -ne 0 ]; then
             LOGE "Certificate issuance failed, script exiting..."
             exit 1
